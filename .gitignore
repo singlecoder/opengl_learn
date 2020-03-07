@@ -33,4 +33,9 @@
 *.app
 
 # make files
-# */CMakeFiles/
+*/CMakeCache.txt
+*/CMakeFiles
+*/Makefile
+*/cmake_install.cmake
+*/libGLAD.a
+*/main
