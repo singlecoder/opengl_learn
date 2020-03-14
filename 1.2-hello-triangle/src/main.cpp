@@ -130,21 +130,49 @@ int main ()
         0.0f,  0.5f, 0.0f
     };
 
+    // 绘制4边形，采用索引缓冲(EBO/IBO)
+    float vertices1[] = {
+        0.5f, 0.5f, 0.0f,   // 右上角
+        0.5f, -0.5f, 0.0f,  // 右下角
+        -0.5f, -0.5f, 0.0f, // 左下角
+        -0.5f, 0.5f, 0.0f   // 左上角
+    };
+
+    unsigned int indices[] = { // 注意索引从0开始! 
+        0, 1, 3, // 第一个三角形
+        1, 2, 3  // 第二个三角形
+    };
+
     // 创建缓冲对象对象
-    GLuint VBO;
-    glGenBuffers(1, &VBO);
+    GLuint VBOs[2];
+    glGenBuffers(2, VBOs);
+
+    // 创建索引缓冲
+    GLuint EBO;
+    glGenBuffers(1, &EBO);
 
     // 创建顶点数组
-    GLuint VAO;
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
-
+    GLuint VAOs[2];
+    glGenVertexArrays(2, VAOs);
+    
+    // 绘制三角形
+    glBindVertexArray(VAOs[0]);
     // 把缓冲对象绑定到 GL_ARRAY_BUFFER
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
     // 将数据复制到指定目标的缓冲区中
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    // 设置openGL如何解析顶点数据
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    // 启用顶点属性
+    glEnableVertexAttribArray(0);
 
+    // 绘制四边形
+    glBindVertexArray(VAOs[1]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
+    // 把缓冲对象绑定到 GL_ELEMENT_ARRAY_BUFFER
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     // 设置openGL如何解析顶点数据
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     // 启用顶点属性
@@ -152,6 +180,9 @@ int main ()
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
+    // 确定渲染三角形或者四边形
+    int flag = 0;
 
     // 渲染循环
     while (!glfwWindowShouldClose(window))
@@ -163,8 +194,20 @@ int main ()
         // 清空屏幕颜色缓冲
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        flag++;
+        if (flag < 100) {
+            glBindVertexArray(VAOs[0]);
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+        } else {
+            if (flag == 200) {
+                flag = 0;
+            }
+            
+            glBindVertexArray(VAOs[1]);
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        }
 
         // 交换颜色缓冲
         glfwSwapBuffers(window);
@@ -172,8 +215,8 @@ int main ()
         glfwPollEvents();
     }
 
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
+    glDeleteVertexArrays(2, VAOs);
+    glDeleteBuffers(2, VBOs);
 
     glfwTerminate();
     return 0;
