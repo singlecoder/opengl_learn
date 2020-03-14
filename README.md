@@ -23,3 +23,4 @@ vscode: 1.41.1
 --------------------|------------------|
 temp-demo           |模版demo，提供开发环境|
 1.1-hello-window    |窗口显示、清除颜色缓冲区|
+1.2-hello-triangle  |绘制三角形：VAO、VBO|
