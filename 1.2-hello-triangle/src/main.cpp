@@ -42,7 +42,7 @@ int main ()
 #endif
 
     // 创建窗口
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "hello window", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "hello triangle", NULL, NULL);
     if (window == NULL)
     {
         cout << "Failed to create GLFW window" << endl;
