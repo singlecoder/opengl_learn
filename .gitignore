@@ -39,3 +39,5 @@
 */cmake_install.cmake
 */libGLAD.a
 */main
+
+.vscode/
