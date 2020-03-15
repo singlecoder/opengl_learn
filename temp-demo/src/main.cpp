@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <learnopengl/shader.h>
+// #include <soil/SOIL.h>
 
 #include <iostream>
 

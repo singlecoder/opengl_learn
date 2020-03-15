@@ -8,6 +8,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 link_directories(${CMAKE_SOURCE_DIR}/lib)
 link_libraries(GLFW3)
+# link_libraries(SOIL)
 
 list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
 
@@ -36,6 +37,7 @@ else()
   set(LIBS )
 endif(WIN32)
 
+# set(LIBS ${LIBS} ${GLFW3} ${SOIL})
 set(LIBS ${LIBS} ${GLFW3})
 
 # glad库
