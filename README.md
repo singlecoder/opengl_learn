@@ -26,3 +26,5 @@ temp-demo           |模版demo，提供开发环境|
 1.2-hello-triangle  |绘制三角形：VAO、VBO、EBO(IBO)|
 1.3.1-hello-shader-uniform|动态更新三角形颜色：uniform|
 1.3.2-hello-shader-interpolation|片段插值|
+1.3.3-hello-shader-class|封装着色器类|
+
