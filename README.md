@@ -27,4 +27,6 @@ temp-demo           |模版demo，提供开发环境|
 1.3.1-hello-shader-uniform|动态更新三角形颜色：uniform|
 1.3.2-hello-shader-interpolation|片段插值|
 1.3.3-hello-shader-class|封装着色器类|
+1.4.1-hello-texture|纹理的使用：环绕、过滤|
+1.4.2-hello-texture-multiple-sample|纹理的使用：纹理单元|
 
