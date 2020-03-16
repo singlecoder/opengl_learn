@@ -44,6 +44,10 @@ set(LIBS ${LIBS} ${GLFW3})
 add_library(GLAD "src/glad.c")
 set(LIBS ${LIBS} GLAD)
 
+# stb_image库
+add_library(STB_IMAGE "src/stb_image.cpp")
+set(LIBS ${LIBS} STB_IMAGE)
+
 # 指定生成目标
 add_executable(main "src/main.cpp")
 
