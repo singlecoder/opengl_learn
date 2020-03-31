@@ -34,6 +34,7 @@ temp-demo           |模版demo，提供开发环境|
 1.6.1-hello-coordinate-more3d|坐标系：MVP矩阵的应用|
 1.7-hello-camera|摄像机：位置、方向、右轴、上轴、LookAt矩阵|
 2.1-light-color|光照：反射|
+2.2-light-phong-lighting-model|冯氏光照模型：环境(ambient)、漫反射(diffuse)、镜面(specular)光照|
 
 
 
