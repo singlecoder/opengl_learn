@@ -36,4 +36,5 @@ temp-demo           |模版demo，提供开发环境|
 2.1-light-color|光照：反射|
 2.2-light-phong-lighting-model|冯氏光照模型：环境(ambient)、漫反射(diffuse)、镜面(specular)光照|
 2.3-light-materials|材质：Material|
+2.4-light-lighting-map|光照贴图：漫反射贴图、镜面光贴图|
 
