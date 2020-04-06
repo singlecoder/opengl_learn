@@ -37,4 +37,6 @@ temp-demo           |模版demo，提供开发环境|
 2.2-light-phong-lighting-model|冯氏光照模型：环境(ambient)、漫反射(diffuse)、镜面(specular)光照|
 2.3-light-materials|材质：Material|
 2.4-light-lighting-map|光照贴图：漫反射贴图、镜面光贴图|
+2.5-light-caster|投光物：平行光(定向光)、点光源、衰减、聚光、平滑边缘|
+
 
